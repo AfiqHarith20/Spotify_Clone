@@ -10,6 +10,9 @@ import 'package:line_icons/line_icons.dart';
 import 'package:spotify_clone_provider/controllers/main_controller.dart';
 import 'package:spotify_clone_provider/methods/get_time_ago.dart';
 import 'package:spotify_clone_provider/methods/snackbar.dart';
+import 'package:spotify_clone_provider/screens/liked_songs/liked_songs.dart';
+import 'package:spotify_clone_provider/screens/playlist/playlist_songs.dart';
+import 'package:spotify_clone_provider/screens/recently_played/recently_played_songs.dart';
 import 'package:spotify_clone_provider/utils/loading.dart';
 
 class Library extends StatelessWidget {
