@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:spotify_clone_provider/methods/string_methods.dart';
 import 'package:spotify_clone_provider/models/category.dart';
+import 'package:spotify_clone_provider/screens/genre_page/genre_page.dart';
+import 'package:spotify_clone_provider/screens/search_results/search_results.dart';
 
 import '../../controllers/main_controller.dart';
 
