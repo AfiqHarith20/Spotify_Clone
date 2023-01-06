@@ -1,26 +1,15 @@
-<<<<<<< HEAD
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_clone_provider/controllers/main_controller.dart';
 import 'package:spotify_clone_provider/models/loading_enum.dart';
 import 'package:spotify_clone_provider/screens/search_results/cubit/search_results_cubit.dart';
-=======
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:spotify_clone_provider/controllers/main_controller.dart';
-import 'package:spotify_clone_provider/models/loading_enum.dart';
 import 'package:spotify_clone_provider/screens/artist_profile/artist_profile.dart';
-import 'package:spotify_clone_provider/screens/search_results/cubit/search_results_cubit.dart';
 import 'package:spotify_clone_provider/utils/bottom_sheet_widget.dart';
 import 'package:spotify_clone_provider/utils/loading.dart';
->>>>>>> update-4
 import 'package:spotify_clone_provider/utils/recent_search.dart';
 
 class SearchResultPage extends StatelessWidget {
@@ -42,11 +31,7 @@ class SearchResultPage extends StatelessWidget {
               onPressed: () {
                 BlocProvider.of<SearchResultsCubit>(context).isSongToggle();
               },
-<<<<<<< HEAD
-              onChange: (String? s) {
-=======
               onChanged: (String? s) {
->>>>>>> update-4
                 if (s == '' || s == null) {
                   BlocProvider.of<SearchResultsCubit>(context).isNullToggle();
                 } else {
@@ -74,9 +59,6 @@ class SearchResultPage extends StatelessWidget {
                       itemBuilder: (context, i) {
                         bool isPlaying = con.player.getCurrentAudioTitle ==
                             state.songs[i].songname;
-<<<<<<< HEAD
-                        return InkWell();
-=======
                         return InkWell(
                           onTap: () {
                             FocusScope.of(context).unfocus();
@@ -286,13 +268,11 @@ class SearchResultPage extends StatelessWidget {
                             ),
                           ),
                         );
->>>>>>> update-4
                       },
                     );
                   }
                 }
-<<<<<<< HEAD
-=======
+
                 if (state.status == LoadPage.error) {
                   return const Center(
                     child: Text(
@@ -304,7 +284,6 @@ class SearchResultPage extends StatelessWidget {
                   );
                 }
                 return Container();
->>>>>>> update-4
               },
             ),
           );
@@ -313,8 +292,6 @@ class SearchResultPage extends StatelessWidget {
     );
   }
 }
-<<<<<<< HEAD
-=======
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final void Function(String? s) onChanged;
@@ -391,4 +368,3 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }
->>>>>>> update-4
