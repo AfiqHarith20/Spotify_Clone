@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:spotify_clone_provider/screens/home/home_screen.dart';
 import 'package:spotify_clone_provider/screens/library/library.dart';
 import 'package:spotify_clone_provider/screens/search_page/search_page.dart';
+import 'package:spotify_clone_provider/utils/bottom_play_widget.dart';
 import '../../controllers/main_controller.dart';
 import '../../utils/bottom_nav_bar/models/nav-bar-padding.model.dart';
 import '../../utils/bottom_nav_bar/models/persisten-bottom-nav-item.widget.dart';
