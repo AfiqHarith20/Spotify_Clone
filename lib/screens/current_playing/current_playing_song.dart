@@ -12,6 +12,7 @@ import 'package:spotify_clone_provider/models/song_model.dart';
 import 'package:spotify_clone_provider/utils/bottom_sheet_widget.dart';
 import 'package:spotify_clone_provider/utils/like_button/like_button.dart';
 import 'package:spotify_clone_provider/utils/loading.dart';
+import 'package:spotify_clone_provider/utils/play_list.dart';
 import 'package:spotify_clone_provider/utils/player/playing_controls.dart';
 import 'package:spotify_clone_provider/utils/player/position_seek_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -273,18 +274,31 @@ class CurrentPlayingSong extends StatelessWidget {
                                       ),
                                     );
                                   },
+                                  child: const Icon(
+                                    CupertinoIcons.music_note_list,
+                                    color: Colors.grey,
+                                    size: 18,
+                                  ),
                                 )
                               ],
                             ),
-                          )
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
                         ],
-                      )
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
           );
+        } else {
+          return Container();
         }
       }),
     );
