@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
+import 'package:spotify_clone_provider/screens/current_playing/current_playing_song.dart';
 import 'package:spotify_clone_provider/screens/home/home_screen.dart';
 import 'package:spotify_clone_provider/screens/library/library.dart';
 import 'package:spotify_clone_provider/screens/search_page/search_page.dart';
