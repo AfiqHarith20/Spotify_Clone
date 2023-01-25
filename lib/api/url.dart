@@ -1,3 +1,1 @@
-const String baseUrl = '';
-
-const String basePath = '';
+const String baseUrl = 'https://spotify23.p.rapidapi.com/';

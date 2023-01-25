@@ -1,306 +1,252 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:spotify_clone_provider/controllers/main_controller.dart';
-import 'package:spotify_clone_provider/models/song_model.dart';
-import 'package:spotify_clone_provider/utils/bottom_sheet_widget.dart';
-import 'package:spotify_clone_provider/utils/like_button/like_button.dart';
-import 'package:spotify_clone_provider/utils/loading.dart';
-import 'package:spotify_clone_provider/utils/play_list.dart';
-import 'package:spotify_clone_provider/utils/player/playing_controls.dart';
-import 'package:spotify_clone_provider/utils/player/position_seek_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'loading.dart';
 
-class CurrentPlayingSong extends StatelessWidget {
+class PlayListWidget extends StatefulWidget {
   final MainController con;
-  const CurrentPlayingSong({
-    Key? key,
+  final List<Audio> audios;
+  const PlayListWidget({
+    super.key,
     required this.con,
-  }) : super(key: key);
+    required this.audios,
+  });
+
+  @override
+  State<PlayListWidget> createState() => _PlayListWidgetState();
+}
+
+class _PlayListWidgetState extends State<PlayListWidget> {
+  Audio findSong(title) {
+    final currentlyPlayingAudio = widget.con.findByname(widget.audios, title);
+    return currentlyPlayingAudio;
+  }
 
   @override
   Widget build(BuildContext context) {
     final devicePexelRatio = MediaQuery.of(context).devicePixelRatio;
-
-    return Container(
-      child: con.player.builderCurrent(builder: (context, playing) {
-        if (playing != null) {
-          final myAudio = con.find(con.audios, playing.audio.assetAudioPath);
-          return Container(
-            color: Colors.black,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 0.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 30,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(
+          "Playlist",
+          style: Theme.of(context).textTheme.headline4,
+        ),
+      ),
+      body: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Builder(
+            builder: (context) {
+              final currentlyPlayingAudio = widget.con.findByname(
+                  widget.audios, widget.con.player.getCurrentAudioTitle);
+              int indexOfCurrentAudio =
+                  widget.audios.indexOf(currentlyPlayingAudio);
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: Text(
+                        "Playing Now",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4!
+                            .copyWith(fontSize: 18),
                       ),
-                      SafeArea(
+                    ),
+                    InkWell(
+                      child: Container(
+                        color: Colors.transparent,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16.0, horizontal: 12),
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              IconButton(
-                                onPressed: () => Navigator.pop(context),
-                                icon: const Icon(
-                                  Icons.arrow_back_ios,
-                                  color: Colors.white,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(3),
+                                child: CachedNetworkImage(
+                                  imageUrl: widget.audios[indexOfCurrentAudio]
+                                      .metas.image!.path,
+                                  width: 50,
+                                  height: 50,
+                                  memCacheHeight:
+                                      (50 * devicePexelRatio).round(),
+                                  memCacheWidth:
+                                      (50 * devicePexelRatio).round(),
+                                  maxHeightDiskCache:
+                                      (50 * devicePexelRatio).round(),
+                                  maxWidthDiskCache:
+                                      (50 * devicePexelRatio).round(),
+                                  progressIndicatorBuilder: (context, url, l) =>
+                                      const LoadingImage(),
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              Expanded(
-                                child: Center(
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12.0),
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'NOW PLAYING',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                        ),
+                                      Text(
+                                        widget.audios[indexOfCurrentAudio].metas
+                                                .title ??
+                                            '',
+                                        maxLines: 1,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1
+                                            ?.copyWith(
+                                              color: Colors.lightGreen[700],
+                                            ),
                                       ),
                                       const SizedBox(
-                                        height: 4,
+                                        height: 8,
                                       ),
                                       Text(
-                                        myAudio.metas.artist!,
-                                        style: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 14,
-                                        ),
+                                        widget.audios[indexOfCurrentAudio].metas
+                                            .artist!,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1!
+                                            .copyWith(color: Colors.grey),
+                                      ),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        widget.audios[indexOfCurrentAudio].metas
+                                            .artist!,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1!
+                                            .copyWith(color: Colors.grey),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  showModalBottomSheet(
-                                    useRootNavigator: true,
-                                    isScrollControlled: true,
-                                    elevation: 100,
-                                    backgroundColor: Colors.black38,
-                                    context: context,
-                                    builder: (context) {
-                                      return BottomSheetWidget(
-                                        con: con,
-                                        isNext: true,
-                                        song: SongModel(
-                                          songid: myAudio.metas.id,
-                                          songname: myAudio.metas.title,
-                                          userid: myAudio.metas.album,
-                                          trackid: myAudio.path,
-                                          duration: '',
-                                          coverImageUrl:
-                                              myAudio.metas.image!.path,
-                                          name: myAudio.metas.artist,
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                                icon: const Icon(
-                                  Icons.more_vert,
-                                  color: Colors.white,
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 26.0),
-                    child: AspectRatio(
-                      aspectRatio: 1,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(3),
-                        child: CachedNetworkImage(
-                          imageUrl: myAudio.metas.image!.path,
-                          memCacheHeight: (200 * devicePexelRatio).round(),
-                          memCacheWidth: (200 * devicePexelRatio).round(),
-                          maxHeightDiskCache: (200 * devicePexelRatio).round(),
-                          maxWidthDiskCache: (200 * devicePexelRatio).round(),
-                          progressIndicatorBuilder: (context, url, l) =>
-                              const LoadingImage(
-                            icon: Icon(
-                              LineIcons.compactDisc,
-                              size: 120,
-                            ),
-                          ),
-                          fit: BoxFit.cover,
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: Text(
+                        "Next Songs",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4!
+                            .copyWith(fontSize: 18),
                       ),
                     ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24.0),
-                                  child: Text(
-                                    myAudio.metas.title!,
-                                    maxLines: 1,
-                                    style:
-                                        Theme.of(context).textTheme.headline4,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 24.0,
-                                  ),
-                                  child: Text(
-                                    myAudio.metas.artist!,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1!
-                                        .copyWith(
-                                          color: Colors.grey,
+                    ReorderableListView.builder(
+                      itemCount:
+                          widget.audios.sublist(indexOfCurrentAudio + 1).length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      onReorder: (int oldIndex, int newIndex) async {
+                        final index =
+                            newIndex > oldIndex ? newIndex - 1 : newIndex;
+                        setState(() {
+                          widget.audios.insert(
+                            indexOfCurrentAudio + 1 + index,
+                            widget.audios
+                                .removeAt(indexOfCurrentAudio + 1 + oldIndex),
+                          );
+                        });
+                      },
+                      itemBuilder: (context, i) {
+                        final newAudio =
+                            widget.audios.sublist(indexOfCurrentAudio + 1)[i];
+                        return InkWell(
+                          onTap: () async {
+                            await widget.con.player.playlistPlayAtIndex(widget
+                                .audios
+                                .indexOf(findSong(newAudio.metas.title)));
+                            setState(() {});
+                          },
+                          key: ValueKey(newAudio),
+                          child: Container(
+                            color: Colors.transparent,
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(3),
+                                      child: CachedNetworkImage(
+                                        imageUrl: newAudio.metas.image!.path,
+                                        width: 50,
+                                        height: 50,
+                                        memCacheHeight: (50 *
+                                                MediaQuery.of(context)
+                                                    .devicePixelRatio)
+                                            .round(),
+                                        memCacheWidth: (50 *
+                                                MediaQuery.of(context)
+                                                    .devicePixelRatio)
+                                            .round(),
+                                        progressIndicatorBuilder:
+                                            (context, url, l) =>
+                                                const LoadingImage(),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12.0,
                                         ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          LikeButton(
-                            name: myAudio.metas.title!,
-                            fullname: myAudio.metas.artist!,
-                            username: myAudio.metas.album!,
-                            id: myAudio.metas.id!,
-                            track: myAudio.path,
-                            isIcon: false,
-                            cover: myAudio.metas.image!.path,
-                          ),
-                          const SizedBox(
-                            width: 24,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          con.player.builderRealtimePlayingInfos(
-                              builder: (context, RealtimePlayingInfos? infos) {
-                            if (infos == null) {
-                              return const SizedBox();
-                            }
-                            return PositionSeekWidget(
-                                currentPosition: infos.currentPosition,
-                                duration: infos.duration,
-                                seekTo: (to) {
-                                  con.player.seek(to);
-                                });
-                          }),
-                          con.player.builderLoopMode(
-                            builder: (context, loopMode) {
-                              return PlayerBuilder.isPlaying(
-                                  player: con.player,
-                                  builder: (context, isPlaying) {
-                                    return PlayingControls(
-                                      loopMode: loopMode,
-                                      isPlaying: isPlaying,
-                                      con: con,
-                                      isPlaylist: true,
-                                      onStop: () {
-                                        con.player.stop();
-                                      },
-                                      toggleLoop: () {
-                                        con.player.toggleLoop();
-                                      },
-                                      onPlay: () {
-                                        con.player.playOrPause();
-                                      },
-                                      onNext: () {
-                                        con.player.next();
-                                      },
-                                      onPrevious: () {
-                                        con.player.previous();
-                                      },
-                                    );
-                                  });
-                            },
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 26.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    launch(myAudio.path);
-                                  },
-                                  child: const Icon(
-                                    Icons.download_sharp,
-                                    color: Colors.grey,
-                                    size: 18,
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                        builder: (context) => PlayListWidget(
-                                          audios: con.player.playlist!.audios,
-                                          con: con,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              newAudio.metas.title ?? '',
+                                              maxLines: 1,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1
+                                                  ?.copyWith(
+                                                      color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Text(
+                                              newAudio.metas.artist!,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1!
+                                                  .copyWith(color: Colors.grey),
+                                            )
+                                          ],
                                         ),
                                       ),
-                                    );
-                                  },
-                                  child: const Icon(
-                                    CupertinoIcons.music_note_list,
-                                    color: Colors.grey,
-                                    size: 18,
-                                  ),
-                                )
-                              ],
-                            ),
+                                    ),
+                                    const Icon(
+                                      CupertinoIcons.line_horizontal_3,
+                                      color: Colors.grey,
+                                    ),
+                                  ],
+                                )),
                           ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          );
-        } else {
-          return Container();
-        }
-      }),
+                        );
+                      },
+                    )
+                  ],
+                ),
+              );
+            },
+          )),
     );
   }
 }
