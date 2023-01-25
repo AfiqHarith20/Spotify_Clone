@@ -9,12 +9,12 @@ import 'package:spotify_clone_provider/models/user.dart';
 class GenreRepository {
   Future<List<User>> getUsers(String tag) async {
     final query = {
-      'page': 0.toString(),
+      'offset': 0.toString(),
       'limit': 50.toString(),
     };
 
-    Response res =
-        await getResponse(Uri.https(baseUrl, basePath + '' + tag, query));
+    Response res = await getResponse(
+        Uri.https('${baseUrl}artists/genres/$tag', query.toString()));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
       return (body['results'] as List).map((e) => User.fromJson(e)).toList();
@@ -23,14 +23,14 @@ class GenreRepository {
     }
   }
 
-  Future<List<SongModel>> getSongs(String tag) async {
+  Future<List<SongModel>> getSongs(String genres) async {
     final query = {
-      'page': 0.toString(),
+      'offset': 0.toString(),
       'limit': 50.toString(),
     };
 
-    Response res =
-        await getResponse(Uri.https(baseUrl, basePath + '' + tag, query));
+    Response res = await getResponse(
+        Uri.https('${baseUrl}genres/$genres', query.toString()));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
 
