@@ -14,7 +14,8 @@ class GetHomePage {
       "page": 0.toString(),
       "limit": 26.toString()
     };
-    Response res = await getResponse(Uri.https(baseUrl, basePath + '', query));
+    Response res = await getResponse(
+        Uri.https('${baseUrl}user_profile/', query.toString()));
     if (res.statusCode == 200) {
       final body = jsonDecode(res.body);
       print(body);
@@ -31,9 +32,8 @@ class GetHomePage {
   Future<List<SongModel>> getSongs() async {
     final query = {"limit": 30.toString()};
     final value = await getResponse(Uri.https(
-      baseUrl,
-      basePath + '',
-      query,
+      '${baseUrl}albums/',
+      query.toString(),
     ));
     if (value.statusCode == 200) {
       final body = jsonDecode(value.body);

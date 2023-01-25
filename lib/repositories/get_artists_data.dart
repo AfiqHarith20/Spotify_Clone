@@ -9,7 +9,7 @@ import '../api/url.dart';
 class GetArtistsData {
   Future<UserModel> getUserData(String id) async {
     final value = await getResponse(
-      Uri.https(baseUrl, basePath + ''),
+      Uri.https('${baseUrl}user_profile/'),
     );
 
     if (value.statusCode == 200) {
@@ -22,10 +22,12 @@ class GetArtistsData {
   }
 
   Future<List<SongModel>> getSong(String id) async {
-    final value = await getResponse(Uri.https(baseUrl, basePath + '' + id, {
-      'page': 0.toString(),
-      'limit': 100.toString(),
-    }));
+    final value = await getResponse(Uri.https(
+        '${baseUrl}artist_albums/$id',
+        {
+          'offset': 0.toString(),
+          'limit': 100.toString(),
+        } as String));
     if (value.statusCode == 200) {
       final body = jsonDecode(value.body);
       return ((body['results'] as List)

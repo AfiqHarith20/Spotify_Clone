@@ -15,7 +15,8 @@ class SearchRespository {
       "q": tag,
     };
 
-    Response res = await getResponse(Uri.https(baseUrl, basePath + '', query));
+    Response res =
+        await getResponse(Uri.https('${baseUrl}search/', query.toString()));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
       return (body['results'] as List).map((e) => User.fromJson(e)).toList();
@@ -31,7 +32,8 @@ class SearchRespository {
       "q": tag,
     };
 
-    Response res = await getResponse(Uri.https(baseUrl, basePath + '', query));
+    Response res =
+        await getResponse(Uri.https('${baseUrl}albums/', query.toString()));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
 

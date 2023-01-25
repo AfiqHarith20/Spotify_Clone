@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,10 @@ import 'package:spotify_clone_provider/models/song_model.dart';
 import 'package:spotify_clone_provider/utils/bottom_sheet_widget.dart';
 import 'package:spotify_clone_provider/utils/like_button/like_button.dart';
 import 'package:spotify_clone_provider/utils/loading.dart';
+import 'package:spotify_clone_provider/utils/play_list.dart';
+import 'package:spotify_clone_provider/utils/player/playing_controls.dart';
+import 'package:spotify_clone_provider/utils/player/position_seek_widget.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class CurrentPlayer extends StatefulWidget {
   final MainController con;
@@ -218,15 +223,123 @@ class _CurrentPlayerState extends State<CurrentPlayer> {
                                 ),
                                 const SizedBox(width: 24),
                               ],
+                            ),
+                            Column(
+                              children: <Widget>[
+                                widget.con.player.builderRealtimePlayingInfos(
+                                  builder:
+                                      (context, RealtimePlayingInfos? infos) {
+                                    if (infos == null) {
+                                      return PositionSeekWidget(
+                                        currentPosition:
+                                            const Duration(seconds: 0),
+                                        duration: const Duration(
+                                            minutes: 3, seconds: 23),
+                                        seekTo: (to) {},
+                                      );
+                                    }
+                                    return PositionSeekWidget(
+                                      currentPosition: infos.currentPosition,
+                                      duration: infos.duration,
+                                      seekTo: (to) {
+                                        widget.con.player.seek(to);
+                                      },
+                                    );
+                                  },
+                                ),
+                                widget.con.player.builderLoopMode(
+                                  builder: (context, loopMode) {
+                                    return PlayerBuilder.isPlaying(
+                                        player: widget.con.player,
+                                        builder: (context, isPlaying) {
+                                          return PlayingControls(
+                                            loopMode: loopMode,
+                                            isPlaying: isPlaying,
+                                            con: widget.con,
+                                            onPlay: () {
+                                              widget.con.player.playOrPause();
+                                            },
+                                            onStop: () {
+                                              widget.con.player.stop();
+                                            },
+                                            toggleLoop: () {
+                                              widget.con.player.toggleLoop();
+                                            },
+                                            onNext: () {
+                                              widget.con.player.next();
+                                            },
+                                            onPrevious: () {
+                                              widget.con.player.previous();
+                                            },
+                                          );
+                                        });
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 26.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          launchUrlString(myAudio.path);
+                                        },
+                                        child: const Icon(
+                                          Icons.download_sharp,
+                                          color: Colors.grey,
+                                          size: 18,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    PlayListWidget(
+                                                  audios: widget.con.player
+                                                      .playlist!.audios,
+                                                  con: widget.con,
+                                                ),
+                                              ));
+                                        },
+                                        child: const Icon(
+                                          CupertinoIcons.music_note_list,
+                                          color: Colors.grey,
+                                          size: 18,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                              ],
                             )
                           ],
-                        )
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
                       ],
                     ),
                   ),
                 ),
               );
+            } else if (snapshot.hasError) {
+              return const Text("");
+            } else if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
+            return Container();
           },
         ),
       ),
