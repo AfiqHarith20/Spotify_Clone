@@ -17,7 +17,7 @@ class ArtistProfileCubit extends Cubit<ArtistProfileState> {
       emit(state.copyWith(status: LoadPage.loading));
       emit(
         state.copyWith(
-          songs: await repo.getSongs(id),
+          songs: await repo.getSong(id),
           user: await repo.getUserData(id),
           status: LoadPage.loaded,
         ),

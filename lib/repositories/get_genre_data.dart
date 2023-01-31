@@ -1,36 +1,36 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import '../api/url.dart';
-import '../methods/get_response.dart';
-import '../models/song_model.dart';
-import '../models/user.dart';
+import 'package:spotify_clone_provider/api/url.dart';
+import 'package:spotify_clone_provider/methods/get_response.dart';
+import 'package:spotify_clone_provider/models/song_model.dart';
+import 'package:spotify_clone_provider/models/user.dart';
 
 class GenreRepository {
   Future<List<User>> getUsers(String tag) async {
     final query = {
-      "page": 0.toString(),
-      "limit": 50.toString(),
+      'offset': 0.toString(),
+      'limit': 50.toString(),
     };
 
     Response res = await getResponse(
-        Uri.https(baseUrl, '$basePath/tags/artists/$tag', query));
+        Uri.https('${baseUrl}artists/genres/$tag', query.toString()));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
       return (body['results'] as List).map((e) => User.fromJson(e)).toList();
     } else {
-      throw Exception("failed fetch users ");
+      throw Exception('Failed fetch users');
     }
   }
 
-  Future<List<SongModel>> getSongs(String tag) async {
+  Future<List<SongModel>> getSongs(String genres) async {
     final query = {
-      "page": 0.toString(),
-      "limit": 50.toString(),
+      'offset': 0.toString(),
+      'limit': 50.toString(),
     };
 
-    Response res =
-        await getResponse(Uri.https(baseUrl, '$basePath/tags/$tag', query));
+    Response res = await getResponse(
+        Uri.https('${baseUrl}genres/$genres', query.toString()));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
 
@@ -38,7 +38,7 @@ class GenreRepository {
           .map((e) => SongModel.fromJson(e))
           .toList();
     } else {
-      throw Exception("failed fetch users ");
+      throw Exception('Failed fetch songs');
     }
   }
 }
