@@ -1,0 +1,309 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.spotifyclone"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="31" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/zaid/Documents/GitHub/Spotify_Clone/android/app/src/debug/AndroidManifest.xml:7:5-66
+15-->/Users/zaid/Documents/GitHub/Spotify_Clone/android/app/src/debug/AndroidManifest.xml:7:22-64
+16    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+16-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-77
+16-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-74
+17    <uses-permission android:name="android.permission.VIBRATE" />
+17-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-66
+17-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-63
+18    <uses-permission android:name="android.permission.WAKE_LOCK" />
+18-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-68
+18-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-65
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+20    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+21    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+22    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+23    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+23-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:24:5-79
+23-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:24:22-76
+24    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+24-->[com.google.android.gms:play-services-measurement-api:21.2.0] /Users/zaid/.gradle/caches/transforms-3/5322551b1a8a780fa08244f682ebb520/transformed/jetified-play-services-measurement-api-21.2.0/AndroidManifest.xml:25:5-79
+24-->[com.google.android.gms:play-services-measurement-api:21.2.0] /Users/zaid/.gradle/caches/transforms-3/5322551b1a8a780fa08244f682ebb520/transformed/jetified-play-services-measurement-api-21.2.0/AndroidManifest.xml:25:22-76
+25    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+25-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:26:5-110
+25-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:26:22-107
+26
+27    <application
+28        android:name="android.app.Application"
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.7.0] /Users/zaid/.gradle/caches/transforms-3/ddea8656ee267a7334f57fa35e5f884b/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+30        android:debuggable="true"
+31        android:icon="@mipmap/ic_launcher"
+32        android:label="spotify_clone_provider" >
+33        <activity
+34            android:name="com.example.spotify_clone_provider.MainActivity"
+35            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+36            android:exported="true"
+37            android:hardwareAccelerated="true"
+38            android:launchMode="singleTop"
+39            android:theme="@style/LaunchTheme"
+40            android:windowSoftInputMode="adjustResize" >
+41
+42            <!--
+43                 Specifies an Android theme to apply to this Activity as soon as
+44                 the Android process has started. This theme is visible to the user
+45                 while the Flutter UI initializes. After that, this theme continues
+46                 to determine the Window background behind the Flutter UI.
+47            -->
+48            <meta-data
+49                android:name="io.flutter.embedding.android.NormalTheme"
+50                android:resource="@style/NormalTheme" />
+51
+52            <intent-filter>
+53                <action android:name="android.intent.action.MAIN" />
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+56            </intent-filter>
+57        </activity>
+58        <!--
+59             Don't delete the meta-data below.
+60             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+61        -->
+62        <meta-data
+63            android:name="flutterEmbedding"
+64            android:value="2" />
+65
+66        <service
+66-->[:firebase_storage] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+67            android:name="com.google.firebase.components.ComponentDiscoveryService"
+67-->[:firebase_storage] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-89
+68            android:directBootAware="true"
+68-->[com.google.firebase:firebase-common:20.2.0] /Users/zaid/.gradle/caches/transforms-3/5bcf3444d33f14960f1cb01da1ed360f/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:34:13-43
+69            android:exported="false" >
+69-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:21:13-37
+70            <meta-data
+70-->[:firebase_storage] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+71                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+71-->[:firebase_storage] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-126
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[:firebase_storage] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+73            <meta-data
+73-->[:firebase_performance] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_performance/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:85
+74                android:name="com.google.firebase.components:io.flutter.plugins.firebase.performance.FlutterFirebaseAppRegistrar"
+74-->[:firebase_performance] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_performance/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-130
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[:firebase_performance] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_performance/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-82
+76            <meta-data
+76-->[:firebase_core] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+77                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+77-->[:firebase_core] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[:firebase_core] /Users/zaid/Documents/GitHub/Spotify_Clone/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+79            <meta-data
+79-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:22:13-24:85
+80                android:name="com.google.firebase.components:com.google.firebase.perf.FirebasePerfRegistrar"
+80-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:23:17-109
+81                android:value="com.google.firebase.components.ComponentRegistrar" />
+81-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:24:17-82
+82            <meta-data
+82-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/zaid/.gradle/caches/transforms-3/705e024585b9e9973d5e57ea51e4d5ee/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+83                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+83-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/zaid/.gradle/caches/transforms-3/705e024585b9e9973d5e57ea51e4d5ee/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+84                android:value="com.google.firebase.components.ComponentRegistrar" />
+84-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/zaid/.gradle/caches/transforms-3/705e024585b9e9973d5e57ea51e4d5ee/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+85            <meta-data
+85-->[com.google.firebase:firebase-config:21.2.0] /Users/zaid/.gradle/caches/transforms-3/0ea43fa3d2377510d6e7202750509f4f/transformed/jetified-firebase-config-21.2.0/AndroidManifest.xml:31:13-33:85
+86                android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar"
+86-->[com.google.firebase:firebase-config:21.2.0] /Users/zaid/.gradle/caches/transforms-3/0ea43fa3d2377510d6e7202750509f4f/transformed/jetified-firebase-config-21.2.0/AndroidManifest.xml:32:17-117
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.firebase:firebase-config:21.2.0] /Users/zaid/.gradle/caches/transforms-3/0ea43fa3d2377510d6e7202750509f4f/transformed/jetified-firebase-config-21.2.0/AndroidManifest.xml:33:17-82
+88            <meta-data
+88-->[com.google.firebase:firebase-storage:20.1.0] /Users/zaid/.gradle/caches/transforms-3/8d5e2ca38d47ca8e43c861024316b697/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:32:13-34:85
+89                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+89-->[com.google.firebase:firebase-storage:20.1.0] /Users/zaid/.gradle/caches/transforms-3/8d5e2ca38d47ca8e43c861024316b697/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:33:17-107
+90                android:value="com.google.firebase.components.ComponentRegistrar" />
+90-->[com.google.firebase:firebase-storage:20.1.0] /Users/zaid/.gradle/caches/transforms-3/8d5e2ca38d47ca8e43c861024316b697/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:34:17-82
+91            <meta-data
+91-->[com.google.android.gms:play-services-measurement-api:21.2.0] /Users/zaid/.gradle/caches/transforms-3/5322551b1a8a780fa08244f682ebb520/transformed/jetified-play-services-measurement-api-21.2.0/AndroidManifest.xml:31:13-33:85
+92                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+92-->[com.google.android.gms:play-services-measurement-api:21.2.0] /Users/zaid/.gradle/caches/transforms-3/5322551b1a8a780fa08244f682ebb520/transformed/jetified-play-services-measurement-api-21.2.0/AndroidManifest.xml:32:17-139
+93                android:value="com.google.firebase.components.ComponentRegistrar" />
+93-->[com.google.android.gms:play-services-measurement-api:21.2.0] /Users/zaid/.gradle/caches/transforms-3/5322551b1a8a780fa08244f682ebb520/transformed/jetified-play-services-measurement-api-21.2.0/AndroidManifest.xml:33:17-82
+94            <meta-data
+94-->[com.google.firebase:firebase-installations:17.1.0] /Users/zaid/.gradle/caches/transforms-3/2f6ae03f3b8c8801d91560c66adc56c7/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:17:13-19:85
+95                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+95-->[com.google.firebase:firebase-installations:17.1.0] /Users/zaid/.gradle/caches/transforms-3/2f6ae03f3b8c8801d91560c66adc56c7/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:18:17-127
+96                android:value="com.google.firebase.components.ComponentRegistrar" />
+96-->[com.google.firebase:firebase-installations:17.1.0] /Users/zaid/.gradle/caches/transforms-3/2f6ae03f3b8c8801d91560c66adc56c7/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:19:17-82
+97            <meta-data
+97-->[com.google.firebase:firebase-abt:21.0.2] /Users/zaid/.gradle/caches/transforms-3/49bd716730b5329599b85e2ff7afcb3a/transformed/jetified-firebase-abt-21.0.2/AndroidManifest.xml:13:13-15:85
+98                android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar"
+98-->[com.google.firebase:firebase-abt:21.0.2] /Users/zaid/.gradle/caches/transforms-3/49bd716730b5329599b85e2ff7afcb3a/transformed/jetified-firebase-abt-21.0.2/AndroidManifest.xml:14:17-109
+99                android:value="com.google.firebase.components.ComponentRegistrar" />
+99-->[com.google.firebase:firebase-abt:21.0.2] /Users/zaid/.gradle/caches/transforms-3/49bd716730b5329599b85e2ff7afcb3a/transformed/jetified-firebase-abt-21.0.2/AndroidManifest.xml:15:17-82
+100        </service>
+101
+102        <activity
+102-->[:url_launcher_android] /Users/zaid/Documents/GitHub/Spotify_Clone/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
+103            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+103-->[:url_launcher_android] /Users/zaid/Documents/GitHub/Spotify_Clone/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
+104            android:exported="false"
+104-->[:url_launcher_android] /Users/zaid/Documents/GitHub/Spotify_Clone/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+105            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+105-->[:url_launcher_android] /Users/zaid/Documents/GitHub/Spotify_Clone/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
+106
+107        <receiver
+107-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-16:39
+108            android:name="com.github.florent37.assets_audio_player.notification.NotificationActionReceiver"
+108-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-108
+109            android:exported="true" />
+109-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-36
+110        <receiver
+110-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:17:9-23:20
+111            android:name="com.github.florent37.assets_audio_player.notification.CustomMediaButtonReceiver"
+111-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-107
+112            android:exported="true" >
+112-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-36
+113            <intent-filter>
+113-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-22:29
+114                <action android:name="android.intent.action.MEDIA_BUTTON" />
+114-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:21:17-77
+114-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:21:25-74
+115            </intent-filter>
+116        </receiver>
+117
+118        <service
+118-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:25:9-35:19
+119            android:name="com.github.florent37.assets_audio_player.notification.NotificationService"
+119-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-101
+120            android:enabled="true"
+120-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-35
+121            android:exported="true" >
+121-->[:assets_audio_player] /Users/zaid/Documents/GitHub/Spotify_Clone/build/assets_audio_player/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-36
+122
+123            <!--
+124            <intent-filter>
+125                <action android:name="android.intent.action.MEDIA_BUTTON" />
+126            </intent-filter>
+127            -->
+128        </service>
+129
+130        <uses-library
+130-->[androidx.window:window:1.0.0-beta04] /Users/zaid/.gradle/caches/transforms-3/992c409fa2324ef5eeb324c08fe7ed56/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+131            android:name="androidx.window.extensions"
+131-->[androidx.window:window:1.0.0-beta04] /Users/zaid/.gradle/caches/transforms-3/992c409fa2324ef5eeb324c08fe7ed56/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+132            android:required="false" />
+132-->[androidx.window:window:1.0.0-beta04] /Users/zaid/.gradle/caches/transforms-3/992c409fa2324ef5eeb324c08fe7ed56/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+133        <uses-library
+133-->[androidx.window:window:1.0.0-beta04] /Users/zaid/.gradle/caches/transforms-3/992c409fa2324ef5eeb324c08fe7ed56/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+134            android:name="androidx.window.sidecar"
+134-->[androidx.window:window:1.0.0-beta04] /Users/zaid/.gradle/caches/transforms-3/992c409fa2324ef5eeb324c08fe7ed56/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+135            android:required="false" />
+135-->[androidx.window:window:1.0.0-beta04] /Users/zaid/.gradle/caches/transforms-3/992c409fa2324ef5eeb324c08fe7ed56/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+136
+137        <provider
+137-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:13:9-17:39
+138            android:name="com.google.firebase.perf.provider.FirebasePerfProvider"
+138-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:14:13-82
+139            android:authorities="com.spotifyclone.firebaseperfprovider"
+139-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:15:13-72
+140            android:exported="false"
+140-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:16:13-37
+141            android:initOrder="101" />
+141-->[com.google.firebase:firebase-perf:20.3.0] /Users/zaid/.gradle/caches/transforms-3/3b6df467ad00b7cc1cdebf733472499e/transformed/jetified-firebase-perf-20.3.0/AndroidManifest.xml:17:13-36
+142
+143        <service
+143-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+144            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+144-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+145            android:exported="false" >
+145-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+146            <meta-data
+146-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+147                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+147-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+148                android:value="cct" />
+148-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/zaid/.gradle/caches/transforms-3/8859e871e949e7a1a4cc62458a2ee201/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+149        </service>
+150        <service
+150-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/zaid/.gradle/caches/transforms-3/0adfbdd7b6ed54750164e2c70a864341/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+151            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+151-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/zaid/.gradle/caches/transforms-3/0adfbdd7b6ed54750164e2c70a864341/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+152            android:exported="false"
+152-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/zaid/.gradle/caches/transforms-3/0adfbdd7b6ed54750164e2c70a864341/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+153            android:permission="android.permission.BIND_JOB_SERVICE" >
+153-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/zaid/.gradle/caches/transforms-3/0adfbdd7b6ed54750164e2c70a864341/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+154        </service>
+155
+156        <receiver
+156-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/zaid/.gradle/caches/transforms-3/0adfbdd7b6ed54750164e2c70a864341/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+157            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+157-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/zaid/.gradle/caches/transforms-3/0adfbdd7b6ed54750164e2c70a864341/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+158            android:exported="false" />
+158-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/zaid/.gradle/caches/transforms-3/0adfbdd7b6ed54750164e2c70a864341/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+159
+160        <provider
+160-->[com.google.firebase:firebase-common:20.2.0] /Users/zaid/.gradle/caches/transforms-3/5bcf3444d33f14960f1cb01da1ed360f/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:25:9-30:39
+161            android:name="com.google.firebase.provider.FirebaseInitProvider"
+161-->[com.google.firebase:firebase-common:20.2.0] /Users/zaid/.gradle/caches/transforms-3/5bcf3444d33f14960f1cb01da1ed360f/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:26:13-77
+162            android:authorities="com.spotifyclone.firebaseinitprovider"
+162-->[com.google.firebase:firebase-common:20.2.0] /Users/zaid/.gradle/caches/transforms-3/5bcf3444d33f14960f1cb01da1ed360f/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:27:13-72
+163            android:directBootAware="true"
+163-->[com.google.firebase:firebase-common:20.2.0] /Users/zaid/.gradle/caches/transforms-3/5bcf3444d33f14960f1cb01da1ed360f/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:28:13-43
+164            android:exported="false"
+164-->[com.google.firebase:firebase-common:20.2.0] /Users/zaid/.gradle/caches/transforms-3/5bcf3444d33f14960f1cb01da1ed360f/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:29:13-37
+165            android:initOrder="100" />
+165-->[com.google.firebase:firebase-common:20.2.0] /Users/zaid/.gradle/caches/transforms-3/5bcf3444d33f14960f1cb01da1ed360f/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:30:13-36
+166
+167        <receiver
+167-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:29:9-33:20
+168            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+168-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:30:13-85
+169            android:enabled="true"
+169-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:31:13-35
+170            android:exported="false" >
+170-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:32:13-37
+171        </receiver>
+172
+173        <service
+173-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:35:9-38:40
+174            android:name="com.google.android.gms.measurement.AppMeasurementService"
+174-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:36:13-84
+175            android:enabled="true"
+175-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:37:13-35
+176            android:exported="false" />
+176-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:38:13-37
+177        <service
+177-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:39:9-43:72
+178            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+178-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:40:13-87
+179            android:enabled="true"
+179-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:41:13-35
+180            android:exported="false"
+180-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:42:13-37
+181            android:permission="android.permission.BIND_JOB_SERVICE" />
+181-->[com.google.android.gms:play-services-measurement:21.2.0] /Users/zaid/.gradle/caches/transforms-3/bb3efc135295f4b8ec717d4755824c41/transformed/jetified-play-services-measurement-21.2.0/AndroidManifest.xml:43:13-69
+182
+183        <activity
+183-->[com.google.android.gms:play-services-base:18.0.1] /Users/zaid/.gradle/caches/transforms-3/e14b72aaf6d6622c6b1e6c2e1f0f5be8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+184            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+184-->[com.google.android.gms:play-services-base:18.0.1] /Users/zaid/.gradle/caches/transforms-3/e14b72aaf6d6622c6b1e6c2e1f0f5be8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+185            android:exported="false"
+185-->[com.google.android.gms:play-services-base:18.0.1] /Users/zaid/.gradle/caches/transforms-3/e14b72aaf6d6622c6b1e6c2e1f0f5be8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+186            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+186-->[com.google.android.gms:play-services-base:18.0.1] /Users/zaid/.gradle/caches/transforms-3/e14b72aaf6d6622c6b1e6c2e1f0f5be8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+187
+188        <meta-data
+188-->[com.google.android.gms:play-services-basement:18.1.0] /Users/zaid/.gradle/caches/transforms-3/df1ef28bbcf1d61ed33c6e37eec9bc90/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+189            android:name="com.google.android.gms.version"
+189-->[com.google.android.gms:play-services-basement:18.1.0] /Users/zaid/.gradle/caches/transforms-3/df1ef28bbcf1d61ed33c6e37eec9bc90/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+190            android:value="@integer/google_play_services_version" />
+190-->[com.google.android.gms:play-services-basement:18.1.0] /Users/zaid/.gradle/caches/transforms-3/df1ef28bbcf1d61ed33c6e37eec9bc90/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+191    </application>
+192
+193</manifest>

@@ -1,13 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:spotify_clone_provider/methods/get_response.dart';
-import 'package:spotify_clone_provider/models/song_model.dart';
-import 'package:spotify_clone_provider/models/user.dart';
-
 import '../api/url.dart';
+import '../methods/get_response.dart';
+import '../models/song_model.dart';
+import '../models/user.dart';
 
-class SearchRespository {
+class SearchRepository {
   Future<List<User>> getUsers(String tag) async {
     final query = {
       "page": 0.toString(),
@@ -15,13 +14,13 @@ class SearchRespository {
       "q": tag,
     };
 
-    Response res =
-        await getResponse(Uri.https('${baseUrl}search/', query.toString()));
+    Response res = await getResponse(
+        Uri.https(baseUrl, '$basePath/search/artists', query));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
       return (body['results'] as List).map((e) => User.fromJson(e)).toList();
     } else {
-      throw Exception('Failed fetch users');
+      throw Exception("failed fetch users ");
     }
   }
 
@@ -33,7 +32,7 @@ class SearchRespository {
     };
 
     Response res =
-        await getResponse(Uri.https('${baseUrl}albums/', query.toString()));
+        await getResponse(Uri.https(baseUrl, '$basePath/search/songs', query));
     if (res.statusCode == 200) {
       var body = jsonDecode(res.body);
 
@@ -41,7 +40,7 @@ class SearchRespository {
           .map((e) => SongModel.fromJson(e))
           .toList();
     } else {
-      throw Exception('Failed fetch users');
+      throw Exception("failed fetch users ");
     }
   }
 }

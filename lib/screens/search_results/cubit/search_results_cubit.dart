@@ -8,7 +8,7 @@ import 'package:spotify_clone_provider/repositories/get_search_results.dart';
 part 'search_results_state.dart';
 
 class SearchResultsCubit extends Cubit<SearchResultsState> {
-  final repo = SearchRespository();
+  final repo = SearchRepository();
 
   SearchResultsCubit() : super(SearchResultsState.initial());
   void SearchSongs(String tag) async {

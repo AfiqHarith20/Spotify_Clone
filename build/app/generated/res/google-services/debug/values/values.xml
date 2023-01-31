@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">480873555045-mc25d8alk0fts3b0vjumun9r53e8ltfa.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">480873555045</string>
+    <string name="google_api_key" translatable="false">AIzaSyCz48u60yuhLuSfrydZDFsWTXgz8gXQSbU</string>
+    <string name="google_app_id" translatable="false">1:480873555045:android:8ffc52b231f84f61b5128c</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCz48u60yuhLuSfrydZDFsWTXgz8gXQSbU</string>
+    <string name="google_storage_bucket" translatable="false">spotify-clone-52304.appspot.com</string>
+    <string name="project_id" translatable="false">spotify-clone-52304</string>
+</resources>

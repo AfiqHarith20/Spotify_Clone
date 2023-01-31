@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:http/http.dart';
-import 'package:spotify_clone_provider/api/url.dart';
-import 'package:spotify_clone_provider/models/user.dart';
-
+import '../api/url.dart';
 import '../methods/get_response.dart';
 import '../models/song_model.dart';
+import '../models/user.dart';
 
 class GetHomePage {
   Future<List<User>> getUsers() async {
@@ -14,8 +13,8 @@ class GetHomePage {
       "page": 0.toString(),
       "limit": 26.toString()
     };
-    Response res = await getResponse(
-        Uri.https('${baseUrl}user_profile/', query.toString()));
+    Response res =
+        await getResponse(Uri.https(baseUrl, '$basePath/users', query));
     if (res.statusCode == 200) {
       final body = jsonDecode(res.body);
       print(body);
@@ -32,8 +31,9 @@ class GetHomePage {
   Future<List<SongModel>> getSongs() async {
     final query = {"limit": 30.toString()};
     final value = await getResponse(Uri.https(
-      '${baseUrl}albums/',
-      query.toString(),
+      baseUrl,
+      '$basePath/songs/random/all',
+      query,
     ));
     if (value.statusCode == 200) {
       final body = jsonDecode(value.body);
